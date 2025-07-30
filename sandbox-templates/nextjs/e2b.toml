@@ -1,0 +1,17 @@
+# This is a config for E2B sandbox template.
+# You can use template ID (7ic6d8udkpyaep5j9p2z) or template name (amoura-ai-nextjs-test) to create a sandbox:
+
+# Python SDK
+# from e2b import Sandbox, AsyncSandbox
+# sandbox = Sandbox("amoura-ai-nextjs-test") # Sync sandbox
+# sandbox = await AsyncSandbox.create("amoura-ai-nextjs-test") # Async sandbox
+
+# JS SDK
+# import { Sandbox } from 'e2b'
+# const sandbox = await Sandbox.create('amoura-ai-nextjs-test')
+
+team_id = "6f3017f0-c265-4624-b047-7f8473a5f036"
+start_cmd = "/compile_page.sh"
+dockerfile = "e2b.Dockerfile"
+template_name = "amoura-ai-nextjs-test"
+template_id = "7ic6d8udkpyaep5j9p2z"
