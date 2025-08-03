@@ -3,40 +3,52 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useTRPC } from "@/trpc/client";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 
 const Page = () => {
   const [value, setValue] = useState("");
 
+  const router = useRouter();
   const trpc = useTRPC();
 
-  const { data: messages } = useQuery(trpc.messages.getMany.queryOptions());
-  const createMessage = useMutation(
-    trpc.messages.create.mutationOptions({
-      onSuccess: () => {
-        toast.success("Message created.");
+  const createProject = useMutation(
+    trpc.projects.create.mutationOptions({
+      onError: (error) => {
+        toast.error(error.message);
+      },
+      onSuccess: (data) => {
+        router.push(`/projects/${data.id}`);
       },
     })
   );
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (!value.trim()) return toast.error("Enter Prompt");
+    if (createProject.isPending) return;
+
+    createProject.mutate({ value });
+  };
+
   return (
-    <div className="flex justify-center items-center mx-auto max-w-4xl flex-col w-full h-screen">
-      <Input
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        placeholder="Enter job parameters..."
-        aria-label="Background job input"
-        className="mb-4"
-      />
-      <Button
-        disabled={createMessage.isPending}
-        onClick={() => createMessage.mutate({ value })}
+    <div className="flex flex-col w-full h-screen items-center justify-center">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col gap-y-4 mx-auto max-w-xl w-full items-center"
       >
-        Invoke Background Job
-      </Button>
-      <div>{JSON.stringify(messages,null,2)}</div>
+        <Input
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          placeholder="Enter Prompt..."
+          aria-label="Background job input"
+          className="mb-4 mt-20 rounded h-10"
+        />
+        <Button disabled={createProject.isPending}>Submit</Button>
+      </form>
     </div>
   );
 };
