@@ -29,15 +29,15 @@ export const MessagesContainer = ({
     )
   );
 
-  useEffect(() => {
-    const lastAssistantMessageWithFragment = messages.findLast(
-      (message) => message.role === "ASSISTANT" && !!message.fragment
-    );
+  // useEffect(() => {
+  //   const lastAssistantMessageWithFragment = messages.findLast(
+  //     (message) => message.role === "ASSISTANT" && !!message.fragment
+  //   );
 
-    if (lastAssistantMessageWithFragment) {
-      setActiveFragment(lastAssistantMessageWithFragment.fragment);
-    }
-  }, [messages, setActiveFragment]);
+  //   if (lastAssistantMessageWithFragment) {
+  //     setActiveFragment(lastAssistantMessageWithFragment.fragment);
+  //   }
+  // }, [messages, setActiveFragment]);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView();

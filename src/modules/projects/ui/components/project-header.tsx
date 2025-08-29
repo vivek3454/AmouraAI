@@ -1,28 +1,26 @@
-import { useTRPC } from "@/trpc/client";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuRadioGroup,
   DropdownMenuRadioItem,
   DropdownMenuSeparator,
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
+import { useTRPC } from "@/trpc/client";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
 import {
-  ChevronDown,
   ChevronDownIcon,
   ChevronLeftIcon,
-  SunMoonIcon,
+  SunMoonIcon
 } from "lucide-react";
-import Link from "next/link";
 import { useTheme } from "next-themes";
+import Image from "next/image";
+import Link from "next/link";
 
 interface Props {
   projectId: string;
