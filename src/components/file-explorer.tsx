@@ -1,24 +1,23 @@
 import {
+  Breadcrumb,
+  BreadcrumbEllipsis,
+  BreadcrumbItem,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator
+} from "@/components/ui/breadcrumb";
+import {
   ResizableHandle,
   ResizablePanel,
   ResizablePanelGroup,
 } from "@/components/ui/resizable";
-import {
-  Breadcrumb,
-  BreadcrumbEllipsis,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
-import { Fragment, useCallback, useMemo, useState } from "react";
-import { Hint } from "./hint";
-import { Button } from "./ui/button";
-import { CopyCheckIcon, CopyIcon } from "lucide-react";
-import { CodeView } from "./code-view/code-view";
 import { convertFilesToTreeItems } from "@/lib/utils";
+import { CopyCheckIcon, CopyIcon } from "lucide-react";
+import { Fragment, useCallback, useMemo, useState } from "react";
+import { CodeView } from "./code-view/code-view";
+import { Hint } from "./hint";
 import { TreeView } from "./tree-view";
+import { Button } from "./ui/button";
 
 type FileCollection = { [path: string]: string };
 
