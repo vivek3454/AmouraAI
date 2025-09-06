@@ -15,6 +15,7 @@ import Link from "next/link";
 import { Suspense, useState } from "react";
 import { FragmentWeb } from "../components/fragment-web";
 import { ProjectHeader } from "../components/project-header";
+import { UserControl } from "@/components/user-control";
 
 interface Props {
   projectId: string;
@@ -69,6 +70,7 @@ export const ProjectView = ({ projectId }: Props) => {
                     <CrownIcon /> Upgrade
                   </Link>
                 </Button>
+                <UserControl />
               </div>
             </div>
             <TabsContent value="preview">
